@@ -51,7 +51,8 @@ public class Main {
         Scanner input = new Scanner(System.in);
         System.out.println("Type a line: ");
         // nextLine() reads an entire line of text up until you press the enter key
-        String answer = input.nextLine();
+        //String answer = input.nextLine();
+        String answer = input.next();
 
         System.out.println("Type an integer: ");
         // you can read specific data types with methods like nextInt(), nextDouble(),
@@ -64,14 +65,14 @@ public class Main {
         // the %f means we want to print the number after the comma 3.14159
         // the .2 means we want exactly two numbers after the decimal point
         // if we say .3, the value will be round up to 3.142
-        System.out.printf("Pi starts with %.2f\n", 3.14159);
-
+        System.out.printf("Pi starts \\ with %.3f\n", 3.14159);
+        System.out.println();
         // the \ is called the escape character
         // some characters like ", ', and even \ have a special meaning so to
         // print them, we need to tell our program to treat those characters
         // like they are normal
         // \n is useful if you want to print a new line (like we did above with printf)
         char slash = '\"';
-        System.out.println("\"");
+        System.out.println("\'");
     }
 }
