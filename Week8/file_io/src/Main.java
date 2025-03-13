@@ -3,34 +3,48 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         //fileInputStreamReadTwoInts();
-        //fileInputStreamReadAllInts();
-        fileOutputStreamExample();
+        fileInputStreamReadAllInts();
+        //fileOutputStreamExample();
     }
 
-    public static void fileOutputStreamExample() throws FileNotFoundException {
-        FileOutputStream fileStream = new FileOutputStream("hello.txt");
-        PrintWriter fileOut = new PrintWriter(fileStream);
+    public static void fileOutputStreamExample() throws IOException {
+        //FileOutputStream fileStream = new FileOutputStream("hello.txt", true); // true means to append to the file instead of replacing everything
+        try {
+            FileWriter fileWriter = new FileWriter("hello.txt", true);
+            PrintWriter fileOut = new PrintWriter(fileWriter);
 
-        fileOut.println("Hello world!");
-        fileOut.close(); //
+            fileOut.println("Hello world again!");
+            fileOut.close(); //
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
     public static void fileInputStreamReadAllInts() throws FileNotFoundException {
         //FileInputStream fileInputStream = new FileInputStream("numFile.txt");
-        File myFile = new File("numFile.txt");
+        try {
+            File myFile = new File("numFile1.txt");
 
-        Scanner fileInput = new Scanner(myFile);
+            Scanner fileInput = new Scanner(myFile);
 
-        int num;
-        int count = 0;
+            int num;
+            int count = 0;
 
-        while (fileInput.hasNextInt()) {
-            count++;
-            num = fileInput.nextInt();
-            System.out.println("num" + count + ": " + num);
+            while (fileInput.hasNextInt()) {
+                count++;
+                num = fileInput.nextInt();
+                System.out.println("num" + count + ": " + num);
+            }
+            System.out.println("There are " + count + " integers");
+        } catch (FileNotFoundException e) {
+            System.out.println("Caught an exception");
+            System.out.println(e);
+        } finally {
+            System.out.println("And finally...");
         }
-        System.out.println("There are " + count + " integers");
+
+        // System.out.println("after try/catch");
     }
 
     public static void fileInputStreamReadTwoInts() throws FileNotFoundException {
@@ -46,5 +60,18 @@ public class Main {
         System.out.println("num1: " + num1);
         System.out.println("num2: " + num2);
 
+    }
+
+    public static void uniqueLetters() {
+        String test = "abcacdaplap";
+
+        String result = "";
+        for (int i = 0; i < test.length(); i++) {
+            if (!result.contains( test.substring(i, i+1))){
+                result += test.charAt(i);
+                result += '\n';
+            }
+        }
+        System.out.println(result);
     }
 }
