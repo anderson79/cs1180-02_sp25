@@ -67,9 +67,10 @@ public class Main {
 
         String result = "";
         for (int i = 0; i < test.length(); i++) {
-            if (!result.contains( test.substring(i, i+1))){
+            String currentChar = test.substring(i, i + 1);
+            if (!result.contains( currentChar ) ){
                 result += test.charAt(i);
-                result += '\n';
+                result += ' ';
             }
         }
         System.out.println(result);
