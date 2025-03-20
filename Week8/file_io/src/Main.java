@@ -34,7 +34,7 @@ public class Main {
             while (fileInput.hasNextInt()) {
                 count++;
                 num = fileInput.nextInt();
-                System.out.println("num" + count + ": " + num);
+                //System.out.println("num" + count + ": " + num);
             }
             System.out.println("There are " + count + " integers");
         } catch (FileNotFoundException e) {
