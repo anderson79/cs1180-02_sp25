@@ -4,13 +4,17 @@
  * 3/13/2025
  */
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 // myProg.exe option
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         Scanner input = new Scanner(System.in);
 
@@ -22,27 +26,107 @@ public class Main {
         // input as array size
         //inputArraySize(input);
 
-        arraysAsObjects();
-
         // useful array methods
+        // arraysAsObjects();
+
+        // in-class activity
+        // doubleTheNums(9.0, 6);
+
+        // forEachLoop();
 
         // pass array to method - reference
+        //char[] myChars = {'a', 'e', 'i', 'o', 'u'};
+        //System.out.println(Arrays.toString(myChars));
+        //passingArray(myChars);
+        //System.out.println(Arrays.toString(myChars));
+//        char[] returnResult = returnArray(myChars);
+//
+//        System.out.println(Arrays.toString(myChars));
+//        System.out.println(Arrays.toString(returnResult));
 
         // return array from method
 
-        // resize array
-
         // array of Strings/objects
-
-        // shuffle array elements
-
-        // multiple arrays
 
         // multidimensional array
 
         // ArrayList
-        doubleTheNums(5.0, 4);
+        arrayListDemo();
+        // resize array
+
+        // shuffle array elements
+
+        // multiple arrays
     }
+
+    public static void arrayListDemo() throws FileNotFoundException {
+        ArrayList<String> strings;
+        strings = new ArrayList<>();
+//
+//        strings.add("one");
+//        strings.add("two");
+//        strings.add("three");
+//
+//        System.out.println(strings);
+//
+//        strings.add(1, "four");
+//        System.out.println(strings);
+//
+//        strings.set(2, "five");
+//        System.out.println(strings);
+//        strings.add("one");
+//        strings.remove("one");
+//        System.out.println(strings);
+//
+//        strings.removeLast();
+//        System.out.println(strings);
+//
+//        System.out.println(strings.get(1));
+//        strings.addFirst("eight");
+//        System.out.println(strings);
+//
+        File wordFile = new File("words.txt");
+        Scanner wordScan = new Scanner(wordFile);
+
+        while (wordScan.hasNext()) {
+            String nextWord = wordScan.next();
+            strings.add(nextWord);
+        }
+
+        System.out.println(strings);
+        System.out.println(strings.size());
+
+    }
+
+    public static char[] returnArray(char[] chars) {
+//        char[] result = new char[chars.length];
+//        for (int i = 0; i < chars.length; i++) {
+//            result[i] = chars[i];
+//        }
+        char[] result = chars.clone();
+        result[3] = 'z';
+        return result;
+    }
+
+    public static void passingArray(char[] chars) {
+        //System.out.println(Arrays.toString(chars));
+        chars[3] = 'z';
+
+        chars = new char[3];
+        chars[0] = 'y';
+
+        System.out.println(Arrays.toString(chars));
+    }
+
+    public static void forEachLoop() {
+        int[] initVals = {4, 16, 15, 8, 42, 23};
+        for (int value: initVals) {
+            value = value + 1;
+            System.out.println(value);
+        }
+        System.out.println(Arrays.toString(initVals));
+    }
+
 
     public static void doubleTheNums(double start, int num) {
         // make array
@@ -54,10 +138,11 @@ public class Main {
 
         // loop through array starting at index 1
         for (int i = 1; i < num; i++) {
-            // get element at index i - 1
-            double previous = myArray[i - 1];
-            // multiply by two
+            // get element at index (i - 1)
+            int prevIndex = i - 1;
+            double previous = myArray[prevIndex];
 
+            // multiply by two
             double doubled = previous * 2;
 
             // put that into index (i)
@@ -65,6 +150,17 @@ public class Main {
         }
 
         System.out.println(Arrays.toString(myArray));
+        int lastIndex = myArray.length - 1;
+        System.out.println("end of myArray: " + myArray[lastIndex]);
+
+
+        double[] takeTwo = new double[num];
+        double currentValue = start;
+        for (int i = 0; i < num; i++) {
+            takeTwo[i] = currentValue;
+            currentValue = currentValue * 2;
+        }
+        System.out.println(Arrays.toString(takeTwo));
     }
 
     public static void inputArraySize(Scanner input) {
@@ -123,10 +219,16 @@ public class Main {
         // array initialization
         // if I know what values I want I can create the array with them initially
         int[] initVals = {4, 16, 15, 8, 42, 23};
-        for (int i = 0; i < initVals.length; i++) {
+        boolean foundEight = false;
+        for (int i = 0; (i < initVals.length && !foundEight); i++) {
             initVals[i] = initVals[i] * 2;
             System.out.print(initVals[i] + " ");
+
+            if (initVals[i] == 8){
+                foundEight = true;
+            }
         }
+
         System.out.println();
     }
 
