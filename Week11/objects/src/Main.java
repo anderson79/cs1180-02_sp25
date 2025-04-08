@@ -8,7 +8,18 @@ public class Main {
 //        String nullString = null;
 //        nullString.toCharArray();
 
+        // declaring myPoint
+        Point myPoint;
+        //myPoint.display();
+
+        // assigning myPoint
+        myPoint = new Point();
+        myPoint.display();
+
+        // declare and initialize in one statement
         Point p1 = new Point(10000, 12, null);
+
+        //Point p1 = new Point();
         Point p2 = new Point();
         p1.display();// causes program to crash if color has not been initialized
 
@@ -27,7 +38,7 @@ public class Main {
         p1.setX(40);
         p1.setX(-9);
         p1.setY(8);
-        p1.setColor("red");
+        p1.setColor(null);
 
         p2.setX(-15);
         p2.setY(16);

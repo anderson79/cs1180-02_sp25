@@ -8,23 +8,19 @@ public class Point {
     Point() {
         this.x = 0;
         this.y = 0;
-        this.color = "gray";
+        this.color = "NO COLOR";
     }
 
     Point(int newX, int y, String color) {
         setX(newX);
         setY(y);
-        if (color == null) {
-            this.color = "gray";
-        } else {
-            setColor(color);
-        }
+        setColor(color);
     }
 
     // methods
     public void display() {
         int z = this.color.length();
-        System.out.println("{" + x + ", " + y + "}: " + color);
+        System.out.println("{" + x + ", " + y + "}: " + color + " color.length(): " + z);
     }
 
     /**
@@ -53,7 +49,8 @@ public class Point {
      * @param newX the new value of x
      */
     public void setX(int x) {
-        if (inRange(x, 100)) {
+        boolean isInRange = inRange(x, 100);
+        if (isInRange == true) {
             this.x = x;
         }
     }
@@ -70,7 +67,11 @@ public class Point {
     }
 
     public void setColor(String newColor) {
-        this.color = newColor.toLowerCase();
+        if (newColor == null) {
+            this.color = "NO COLOR";
+        } else {
+            this.color = newColor.toLowerCase();
+        }
     }
 
     /**
