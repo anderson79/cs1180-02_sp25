@@ -14,6 +14,8 @@ public class Student extends Person {
         this.uid = -1;
         this.gpa = -1.0;
         this.alumni = false;
+        name = "James";
+        age = 10;
     }
 
     // parameterized constructor

@@ -73,6 +73,8 @@ public class Main {
     public static void testPolymorphism() {
         System.out.println("test polymorphism");
         Person aPerson = new Person("Person A. People", 123);
+        aPerson.name = "james";
+
         printPerson(aPerson);
 
         Person personInstructor = new Instructor("person", 99, "people", "office", 9);
